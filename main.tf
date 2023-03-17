@@ -7,18 +7,3 @@ resource "aws_iam_user" "newuser" {
 }
 
 
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "ec2:*",
-            "Resource": "*",
-            "Effect": "Allow",
-            "Condition": {
-                "StringEquals": {
-                    "ec2:Region": "us-east-2"
-                }
-            }
-        }
-    ]
-}
