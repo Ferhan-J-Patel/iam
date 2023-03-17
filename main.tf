@@ -7,7 +7,10 @@ resource "aws_iam_user" "newuser" {
 }
 
 
-resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
-  role       = aws_iam_role.eks_role.name
+resource "aws_iam_policy_attachment" "test-attach" {
+  name       = "test-attachment"
+  users      = [aws_iam_user.user.name]
+  roles      = [aws_iam_role.role.name]
+  groups     = [aws_iam_group.group.name]
+  policy_arn = aws_iam_policy.policy.arn
 }
