@@ -7,10 +7,18 @@ resource "aws_iam_user" "newuser" {
 }
 
 
-resource "aws_iam_policy_attachment" "test-attach" {
-  name       = "test-attachment"
-  users      = [aws_iam_user.user.name]
-  roles      = [aws_iam_role.role.name]
-  groups     = [aws_iam_group.group.name]
-  policy_arn = aws_iam_policy.policy.arn
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "ec2:*",
+            "Resource": "*",
+            "Effect": "Allow",
+            "Condition": {
+                "StringEquals": {
+                    "ec2:Region": "us-east-2"
+                }
+            }
+        }
+    ]
 }
