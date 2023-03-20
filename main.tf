@@ -17,11 +17,6 @@ resource "aws_iam_user_policy_attachment" "demo-attach"{
     policy_arn = "${aws_iam_policy.policy.arn}"
 }
 
-provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-}
 
 resource "aws_iam_access_key" "example" {
   user = aws_iam_user.newuser.name
