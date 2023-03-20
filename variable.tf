@@ -1,8 +1,8 @@
 variable "username" {
   type    =     list
-  default = ["abdul", "khalid"]
+  default = ["chetan"]
 }
 
 variable "region" {
-  default = "us-east-1"
+  default = "ap-south-1"
 }
