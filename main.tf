@@ -22,6 +22,15 @@ resource "aws_iam_access_key" "example" {
   user = aws_iam_user.newuser.name
 }
 
+locals {
+    secret_access_key_file = "E:/aws/access_key.txt"
+}
+
+resource "local_file" "secret_access_key" {
+  content = join("Access Key ID: ",output.access_key_id.value,"\n","Secret Access Key: ",output.secret_access_key.value,"\n")
+  filename = local.secret_access_key_file
+}
+
 output "access_key_id" {
   value = aws_iam_access_key.example.id
 }
@@ -34,14 +43,7 @@ output "account_id" {
   value = aws_iam_user.newuser.unique_id
 }
 
-locals {
-    secret_access_key_file = "E:/aws/access_key.txt"
-}
 
-resource "local_file" "secret_access_key" {
-  content = join("Access Key ID: ",output.access_key_id.value,"\n","Secret Access Key: ",output.secret_access_key.value,"\n")
-  filename = local.secret_access_key_file
-}
 
 
 
