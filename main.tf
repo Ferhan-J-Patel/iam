@@ -17,10 +17,18 @@ resource "aws_iam_user_policy_attachment" "demo-attach"{
     policy_arn = "${aws_iam_policy.policy.arn}"
 }
 
-resource "aws_iam_user_login_profile" "example" {
-  user    = aws_iam_user.newuser.name  
+resource "aws_iam_access_key" "example" {
+  user = aws_iam_user.example.name
 }
 
-output "password" {
-  value = aws_iam_user_login_profile.example.encrypted_password
+output "access_key_id" {
+  value = aws_iam_access_key.example.id
+}
+
+output "secret_access_key" {
+  value = aws_iam_access_key.example.secret
+}
+
+output "account_id" {
+  value = aws_iam_user.newuser.unique_id
 }
