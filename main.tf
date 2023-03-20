@@ -35,7 +35,7 @@ output "account_id" {
 
 
 locals {
-  secret_access_key_file = "/path/to/secret/access_key.txt"}
+  secret_access_key_file = "E:/aws/access_key.txt"}
 
 resource "local_file" "secret_access_key" {
   content  = join("", [
