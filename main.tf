@@ -2,6 +2,8 @@ module "iam"{
 source = "./iam"
 }
 
+data "aws_caller_identity" "current" {}    
+    
 locals {
     secret_access_key_file = "E:/aws/access_key.txt"
 }
