@@ -16,3 +16,12 @@ resource "aws_iam_user_policy_attachment" "demo-attach"{
     user = "${aws_iam_user.newuser.name}"
     policy_arn = "${aws_iam_policy.policy.arn}"
 }
+
+resource "aws_iam_user_login_profile" "example" {
+  user    = aws_iam_user.newuser.name
+  pgp_key = "keybase:some_person_that_exists"
+}
+
+output "password" {
+  value = aws_iam_user_login_profile.example.encrypted_password
+}
