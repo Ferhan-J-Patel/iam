@@ -18,7 +18,7 @@ resource "aws_iam_user_policy_attachment" "demo-attach"{
 }
 
 resource "aws_iam_access_key" "example" {
-  user = aws_iam_user.example.name
+  user = aws_iam_user.newuser.name
 }
 
 output "access_key_id" {
