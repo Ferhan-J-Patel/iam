@@ -7,6 +7,9 @@ locals {
 }
 
 resource "local_file" "secret_access_key" {
- content = join(",",("Access Key ID: ",module.access_key_id.output.value,"\n","Secret Access Key: ",module.secret_access_key.output.value,"\n"))
+ content = join("", [
+    "Access Key ID: ", output.access_key_id, "\n",
+    "Secret Access Key: ", output.secret_access_key, "\n"
+  ])
   filename = local.secret_access_key_file
 }
