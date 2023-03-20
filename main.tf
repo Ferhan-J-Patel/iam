@@ -13,6 +13,6 @@ resource "aws_iam_policy" "policy" {
 }
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
-    name = "${aws_iam_user.newuser.name}"
+    user = "${aws_iam_user.newuser.name}"
     policy_arn = "${aws_iam_policy.policy.arn}"
 }
