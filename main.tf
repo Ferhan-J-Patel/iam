@@ -2,6 +2,18 @@ provider "aws" {
     region = "ap-south-1"
 }
 
+output "access_key_id" {
+  value = aws_iam_access_key.example.id
+}
+
+output "secret_access_key" {
+  value = aws_iam_access_key.example.secret
+}
+
+output "account_id" {
+  value = aws_iam_user.newuser.unique_id
+}
+
 resource "aws_iam_user" "newuser" {
     name = "chetan"
 }
@@ -31,17 +43,7 @@ resource "local_file" "secret_access_key" {
   filename = local.secret_access_key_file
 }
 
-output "access_key_id" {
-  value = aws_iam_access_key.example.id
-}
 
-output "secret_access_key" {
-  value = aws_iam_access_key.example.secret
-}
-
-output "account_id" {
-  value = aws_iam_user.newuser.unique_id
-}
 
 
 
