@@ -18,8 +18,7 @@ resource "aws_iam_user_policy_attachment" "demo-attach"{
 }
 
 resource "aws_iam_user_login_profile" "example" {
-  user    = aws_iam_user.newuser.name
-  pgp_key = "keybase:some_person_that_exists"
+  user    = aws_iam_user.newuser.name  
 }
 
 output "password" {
