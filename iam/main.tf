@@ -18,9 +18,9 @@ resource "aws_iam_policy" "policy1" {
 }
 
 resource "aws_iam_policy" "policy2" {
-  name        = "AmazonEC2FullAccess"
-  description = "A ec2 policy"
-  policy      = "${file("regionrestriction.json")}"
+  name        = "regionrestriction"
+  description = "A region-wise restriction policy"
+  policy      = "${file("ec2fullaccess.json")}"
 }
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
