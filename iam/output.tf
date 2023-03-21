@@ -12,3 +12,8 @@ output "account_id" {
   value = aws_iam_user.newuser.unique_id
   sensitive = true
 }
+
+output "password" {
+  value     = aws_iam_user_login_profile.administrator.password
+  sensitive = true
+}
