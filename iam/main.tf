@@ -8,7 +8,7 @@ resource "aws_iam_user" "newuser" {
 
 resource "aws_iam_user_login_profile" "administrator" {
   user                    = aws_iam_user.newuser.name
-  password_reset_required = true
+  password_reset_required = false
 }
 
 resource "aws_iam_policy" "policy" {
