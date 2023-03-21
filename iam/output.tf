@@ -9,7 +9,7 @@ output "secret_access_key" {
 }
 
 output "account_id" {
-  value = aws_iam_user.newuser.unique_id
+  value = aws_iam_user.administrator.unique_id
   sensitive = true
 }
 
