@@ -2,12 +2,12 @@ provider "aws" {
     region = "ap-south-1"
 }
 
-#resource "aws_iam_user" "newuser" {
-#    name = "chetan"
-#}
+resource "aws_iam_user" "newuser" {
+    name = "chetan"
+}
 
 resource "aws_iam_user_login_profile" "administrator" {
-  user                    = "chetan"
+  user                    = aws_iam_user.newuser.name
   password_reset_required = true
 }
 
