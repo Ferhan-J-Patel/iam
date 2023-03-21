@@ -25,7 +25,7 @@ resource "aws_iam_policy" "policy1" {
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
     user = "${aws_iam_user.newuser.name}"
-    policy_arn = ["${aws_iam_policy.policy.arn}","${aws_iam_policy.policy1.arn}"]
+    policy_arn = [aws_iam_policy.policy.arn,aws_iam_policy.policy1.arn]
 }
 
 
