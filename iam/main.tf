@@ -14,12 +14,18 @@ resource "aws_iam_user_login_profile" "administrator" {
 resource "aws_iam_policy" "policy" {
   name        = "AmazonEC2FullAccess"
   description = "A ec2 policy"
-  policy      = ["${file("ec2fullaccess.json")}","${file("RegionRestrict.json")}"]
+  policy      = "${file("ec2fullaccess.json")}"
+}
+
+resource "aws_iam_policy" "policy1" {
+  name        = "Regionrestrict"
+  description = "A ec2 policy"
+  policy      = "${file("RegionRestrict.json")}"
 }
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
     user = "${aws_iam_user.newuser.name}"
-    policy_arn = "${aws_iam_policy.policy.arn}"
+    policy_arn = ["${aws_iam_policy.policy.arn}","${aws_iam_policy.policy1.arn}"]
 }
 
 
