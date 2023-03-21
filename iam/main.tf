@@ -11,21 +11,21 @@ resource "aws_iam_user_login_profile" "administrator" {
   password_reset_required = false
 }
 
-resource "aws_iam_policy" "policy" {
+resource "aws_iam_policy" "policy1" {
   name        = "AmazonEC2FullAccess"
   description = "A ec2 policy"
   policy      = "${file("ec2fullaccess.json")}"
 }
 
-resource "aws_iam_policy" "policy1" {
-  name        = "Regionrestrict"
+resource "aws_iam_policy" "policy2" {
+  name        = "AmazonEC2FullAccess"
   description = "A ec2 policy"
   policy      = "${file("regionrestriction.json")}"
 }
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
     user = "${aws_iam_user.newuser.name}"
-    policy_arn = [aws_iam_policy.policy.arn,aws_iam_policy.policy1.arn]
+    policy_arn = [aws_iam_policy.policy1.arn,aws_iam_policy.policy2.arn]
 }
 
 
