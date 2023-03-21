@@ -20,7 +20,7 @@ resource "aws_iam_policy" "policy" {
 resource "aws_iam_policy" "policy1" {
   name        = "Regionrestrict"
   description = "A ec2 policy"
-  policy      = "${file("RegionRestrict.json")}"
+  policy      = "${file("regionrestriction.json")}"
 }
 
 resource "aws_iam_user_policy_attachment" "demo-attach"{
